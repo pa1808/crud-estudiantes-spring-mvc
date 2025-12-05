@@ -1,5 +1,10 @@
 package com.example.services;
 
-public interface TelefonoService {
+import java.util.List;
 
+import com.example.entities.Telefono;
+
+public interface TelefonoService {
+    public Telefono saveTelefono(Telefono telefono);
+    public List<Telefono> getAllTelefonos();
 }
