@@ -73,7 +73,7 @@
         <label for="facultad">Facultad:</label>
         <select id="facultad" th:field="*{facultad}" required>
             <option value="">Seleccione una opción</option>
-            <option th:each=" facultad: ${facultades}" th:text="${facultad.nombre}" th:value="facultad.id"></option>
+            <option th:each=" facultad: ${facultades}" th:text="${facultad.nombre}" th:value="${facultad.id}"></option>
         </select>
         <br><br>
         <label for="telefonos">Telefono(s)</label>
