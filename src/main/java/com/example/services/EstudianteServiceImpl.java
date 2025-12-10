@@ -30,4 +30,19 @@ public class EstudianteServiceImpl implements EstudianteService{
         return estudianteDao.findById(estudianteId).get();
     }
 
+    @Override
+    public void deleteEstudiante(Estudiante e) {
+        estudianteDao.delete(e);
+    }
+
+    @Override
+    public Estudiante updateEstudiante(int estudianteId) {
+        return estudianteDao.save(estudianteDao.findById(estudianteId).get());
+    }
+
+    @Override
+    public List<Estudiante> getEstudianteNombre(String nombre) {
+        return estudianteDao.findByNombre(nombre);
+    }
+
 }
