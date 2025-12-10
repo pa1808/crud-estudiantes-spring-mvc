@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.entities.Estudiante;
+import com.example.entities.Facultad;
 import com.example.services.CorreoService;
 import com.example.services.EstudianteService;
 import com.example.services.FacultadService;
@@ -16,6 +17,9 @@ import com.example.services.TelefonoService;
 import org.springframework.ui.Model;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -38,5 +42,18 @@ public class EstudianteController {
         return "listadoEstudiantes";
         
     };
+
+    @GetMapping("/alta")
+    public String altaEstudiante(Model model) {
+
+        Estudiante estudiante = new Estudiante();
+        model.addAttribute("estudiante", estudiante);
+
+        List<Facultad> facultades = facultadService.getAllFacultades();
+        model.addAttribute("facultades", facultades);
+
+        return "formularioAltaModificacion";
+    }
+    
 
 }

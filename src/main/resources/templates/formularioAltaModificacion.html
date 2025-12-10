@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Alta</title>
+    <style>
+        /* Contenedor general */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color:#FEE6F4;
+            color: #222;
+            margin: 0;
+            padding: 2rem;
+        }
+        
+        
+        form{
+            background: pink;
+            color: #111;
+            font-weight: 600;
+            text-align: left;
+            padding: 0.75rem 0.9rem;
+            border-bottom: 1px solid #ddd;
+
+        }
+
+        .round{
+            width: 450px; 
+            margin: 40px auto; 
+            padding: 5px; 
+            border: 2px solid palevioletred; 
+            border-radius: 15px; 
+            text-align: left;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        }
+
+        input:hover, button:hover{
+            background: #FEE6F4;
+        }
+    </style>
+</head>
+<body>
+    <h1 style=" font-size:20-large; text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+        <a style="font-size: medium; text-decoration: none;" class="round" href="/estudiantes/listar">⬅️</a>
+        Formulario de Alta/Modificación de Estudiantes ✏️
+    </h1>
+    <form class = round method="post" th:object="${estudiante}" th:action="@{/estudiantes/guardar}">
+        <label for="nombre">Nombre:</label>
+        <input type="text" th:field="*{nombre}" id="nombre" reuqired>
+        <br><br>
+        <label for="primerApellido">Primer Apellido:</label>
+        <input type="text" th:field="*{primerApellido}" id="primerApellido" required>
+        <br><br>
+        <label for="segundoApellido">Segundo Apellido:</label>
+        <input type="text" th:field="*{segundoApellido}" id="segundoApellido">
+        <br><br>
+        <fieldset>
+            <legend>Genero</legend>
+            <input type="radio" name="genero" value="HOMBRE" id="hombre" th:field="*{genero}">
+            <label for="hombre">Hombre</label>
+            <br>
+            <input type="radio" name="genero" value="MUJER" id="mujer" th:field="*{genero}">
+            <label for="mujer">Mujer</label>
+            <br>
+            <input type="radio" name="genero" value="OTRO" id="otro" th:field="*{genero}">
+            <label for="otro">Otro</label>
+        </fieldset>
+        <br>
+        <label for="fechaMatricula">Fecha de Matriculación:</label>
+        <input type="date" id="fechaMatricula" th:field="*{fechaMatricula}" required>
+        <br><br>
+        <label for="facultad">Facultad:</label>
+        <select id="facultad" th:field="*{facultad}" required>
+            <option value="">Seleccione una opción</option>
+            <option th:each=" facultad: ${facultades}" th:text="${facultad.nombre}" th:value="facultad.id"></option>
+        </select>
+        <br><br>
+        <label for="telefonos">Telefono(s)</label>
+        <input type="text" id="telefonos" name="numerosTelefono"  placeholder="uno o más separados por ;">
+        <br><br>
+        <label for="correos">Correo(s)</label>
+        <input type="text" id="correos" name="direccionesCorreo" placeholder="uno o más separados por ;">
+        <input type="submit" value="Enviar" style=
+            "margin-left: 40%;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            width: 100px;">
+    </form>
+</body>
+</html>
