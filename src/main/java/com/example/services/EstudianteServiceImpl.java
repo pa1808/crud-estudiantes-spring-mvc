@@ -20,11 +20,7 @@ public class EstudianteServiceImpl implements EstudianteService{
         return estudianteDao.save(e);
     }
 
-    @Override
-    public List<Estudiante> getAllEstudiantes() {
-        return estudianteDao.findAll();
-    }
-
+  
     @Override
     public Estudiante getEstudiante(int estudianteId) {
         return estudianteDao.findById(estudianteId).get();
@@ -43,6 +39,12 @@ public class EstudianteServiceImpl implements EstudianteService{
     @Override
     public List<Estudiante> getEstudianteNombre(String nombre) {
         return estudianteDao.findByNombre(nombre);
+    }
+
+
+    @Override
+    public List<Estudiante> getAllEstudiantes() {
+        return estudianteDao.findAll();
     }
 
 }
