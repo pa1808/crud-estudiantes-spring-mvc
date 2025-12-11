@@ -8,8 +8,8 @@
         /* Contenedor general */
         body {
             font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
-            background:#FEE6F4;
-            color: #222;
+            background:#000000;
+            color: #000000;
             margin: 0;
             padding: 2rem;
         }
@@ -24,36 +24,36 @@
 
         /* Encabezados */
         thead th {
-            background: pink;
+            background: rgb(226, 245, 61);
             color: #111;
             font-weight: 600;
             text-align: left;
             padding: 0.75rem 0.9rem;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #7b834c;
         }
 
         /* Celdas */
         tbody td {
             padding: 0.65rem 0.9rem;
-            border-bottom: 1px solid #eee; /* líneas horizontales */
+            border-bottom: 1px solid #f1f8af; /* líneas horizontales */
             text-align: left;
         }
 
         /* Rayas (zebra) */
         tbody tr:nth-child(odd) {
-            background: whitesmoke;
+            background: rgb(224, 224, 180);
         }
 
         /* Hover opcional para mejorar lectura */
         tbody tr:hover {
-            background: #eef6ff;
+            background: rgb(226, 245, 61);
         }
 
         .round{
             width: 250px; 
             margin: 40px auto; 
             padding: 5px; 
-            border: 2px solid palevioletred; 
+            border: 2px solid rgb(226, 245, 61); 
             border-radius: 15px; 
             text-align: center;
             box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
@@ -62,9 +62,9 @@
     </style>
 </head>
 <body>
-    <h1 style=" font-size:20-large; color: palevioletred; text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Listado de Estudiantes 👩‍🎓</h1>
+    <h1 style=" font-size:20-large; color: rgb(226, 245, 61); text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Listado de Estudiantes 👩‍🎓</h1>
     <div class = round>        
-        <h2 style=" text-align: center; font-size: medium; "><a style= "color: palevioletred; text-decoration: none;" th:href="@{/estudiantes/alta}">Dar de Alta</a></h2>
+        <h2 style=" text-align: center; font-size: medium; "><a style= "color: rgb(226, 245, 61); text-decoration: none;" th:href="@{/estudiantes/alta}">Dar de Alta</a></h2>
     </div>
     <table>
         <thead>
@@ -74,6 +74,7 @@
                 <th>Segundo Apellido</th>
                 <th>Genero</th>
                 <th>Fecha Matricula</th>
+                <th>Facultad</th>
             </tr>
         </thead>
         <tbody>
@@ -83,6 +84,7 @@
                 <td th:text="${estudiante.segundoApellido}"></td>
                 <td th:text="${estudiante.genero}"></td>
                 <td th:text="${estudiante.fechaMatricula}"></td>
+                <td th:text="${estudiante.facultad.nombre}"></td>
             </tr>
         </tbody>
     </table>

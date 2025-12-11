@@ -43,6 +43,8 @@ public class EstudianteController {
         List<Estudiante> estudiantes = estudianteService.getAllEstudiantes();
         model.addAttribute("estudiantes",estudiantes);
 
+        
+
         return "listadoEstudiantes";
         
     }

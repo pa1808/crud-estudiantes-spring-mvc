@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.dao.FacultadDao;
+import com.example.entities.Estudiante;
 import com.example.entities.Facultad;
 
 import lombok.RequiredArgsConstructor;
@@ -30,4 +31,5 @@ public class FacultadServiceImpl implements FacultadService{
         return facultadDao.findById(facultadId).get();
     }
 
+    
 }
