@@ -100,6 +100,10 @@ public class EstudianteController {
             String[] arrayTelefonos = telefonos.split(";");
             List<String> listadoTelefonos = Arrays.asList(arrayTelefonos);
 
+           if(telefonoService.existsByEstudiante(estudiante)){
+            telefonoService.deleteByEstudiante(estudiante);
+           }
+
             listadoTelefonos.forEach(t -> {
 
                 telefonoService.saveTelefono(
@@ -112,6 +116,10 @@ public class EstudianteController {
         }
 
         if(correos!=null){
+
+            if(correoService.existsByEstudiante(estudiante)){
+                correoService.deleteByEstudiante(estudiante);
+            }
 
             String[] arrayCorreos = correos.split(";");
             List<String> listadoCorreos = Arrays.asList(arrayCorreos);

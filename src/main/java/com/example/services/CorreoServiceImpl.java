@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.dao.CorreoDao;
 import com.example.entities.Correo;
+import com.example.entities.Estudiante;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,6 +24,16 @@ public class CorreoServiceImpl implements CorreoService{
     @Override
     public List<Correo> getAllCorreos() {
         return correoDao.findAll();
+    }
+
+    @Override
+    public boolean existsByEstudiante(Estudiante estudiante) {
+        return correoDao.existsByEstudiante(estudiante);
+    }
+
+    @Override
+    public void deleteByEstudiante(Estudiante estudiante) {
+        correoDao.deleteByEstudiante(estudiante);
     }
 
 }

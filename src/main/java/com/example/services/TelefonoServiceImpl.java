@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.controllers.Estudiante;
 import com.example.dao.TelefonoDao;
 import com.example.entities.Telefono;
 
@@ -24,5 +25,16 @@ public class TelefonoServiceImpl implements TelefonoService{
     public List<Telefono> getAllTelefonos() {
         return telefonoDao.findAll();
     }
+
+    @Override
+    public boolean existsByEstudiante(com.example.entities.Estudiante estudiante) {
+        return telefonoDao.existsByEstudiante(estudiante);
+    }
+
+    @Override
+    public void deleteByEstudiante(com.example.entities.Estudiante estudiante) {
+        telefonoDao.deleteByEmpleado(estudiante);
+    }
+
 
 }
