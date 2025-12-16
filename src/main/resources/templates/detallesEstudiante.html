@@ -51,7 +51,7 @@
         <a style="font-size: medium; text-decoration: none;" class="round" href="/estudiantes/listar">⬅️</a>
         Detalles del Estudiante: <b th:text="${estudiante.nombre} + ' '+${estudiante.primerApellido}"></b>
     </h1>
-    <h2 th:text="'Fcaultad: '+${estudiante.facultad.nombre}"></h2>
+    <h2 th:text="'Facultad: '+${estudiante.facultad.nombre}"></h2>
     <div class = "container">
         <div class="round">
             <h3>Telefonos: </h3>
@@ -65,7 +65,10 @@
                 <li th:each=" correo: ${correos}" th:text="${correo.direccion}"></li>
             </ul>
         </div>
-      
+        <div class="round" th:if="${estudiante.foto!=null}">
+            <h3>Foto</h3>
+            <img alt="foto del estudiante" th:src="@{/imagenes/}+${estudiante.foto}">
+        </div>
         
     </div>
 </body>

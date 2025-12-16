@@ -59,4 +59,6 @@ public class Estudiante implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "estudiante", cascade = CascadeType.REMOVE)
     private List<Correo> correos;
 
+    private String foto;
+
 }

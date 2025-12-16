@@ -45,7 +45,7 @@
         <a style="font-size: medium; text-decoration: none;" class="round" href="/estudiantes/listar">⬅️</a>
         Formulario de Alta/Modificación de Estudiantes ✏️
     </h1>
-    <form class = round method="post" th:object="${estudiante}" th:action="@{/estudiantes/guardar}">
+    <form class = round method="post" th:object="${estudiante}" th:action="@{/estudiantes/guardar}" enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}">
         <label for="nombre">Nombre:</label>
         <input type="text" th:field="*{nombre}" id="nombre" reuqired>
@@ -82,6 +82,9 @@
         <br><br>
         <label for="correos">Correo(s)</label>
         <input type="text" id="correos" name="direccionesCorreo" th:value="${direccionesCorreo}" placeholder="uno o más separados por ;">
+        <br><br>
+        <label for="file">Foto del estudiante:</label>
+        <input type="file" id="file" name="imagen">
         <input type="submit" value="Enviar" style=
             "margin-left: 40%;
             margin-top: 5%;

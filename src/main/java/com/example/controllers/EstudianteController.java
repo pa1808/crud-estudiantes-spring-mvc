@@ -1,6 +1,10 @@
 package com.example.controllers;
 
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +29,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 
@@ -66,7 +71,27 @@ public class EstudianteController {
     @PostMapping("/guardar")
     public String guardarEstudiante(@ModelAttribute Estudiante estudiante, 
         @RequestParam(name = "numerosTelefono", required = false) String telefonos,
-        @RequestParam(name = "direccionesCorreo", required = false) String correos) {
+        @RequestParam(name = "direccionesCorreo", required = false) String correos,
+        @RequestParam(name = "imagen", required = false) MultipartFile imagen) {
+
+
+        if(imagen != null && !imagen.isEmpty()){
+            Path rutaRelativa = Paths.get("src\\main\\resources\\static\\imagenes");
+            String rutaAbsoluta = rutaRelativa.toFile().getAbsolutePath();
+            Path rutaCompleta = Paths.get(rutaAbsoluta+"\\"+imagen.getOriginalFilename());
+
+            
+            try {
+                byte[] imagenRecibidaBytes;
+                imagenRecibidaBytes = imagen.getBytes();
+                Files.write(rutaCompleta, imagenRecibidaBytes);
+                estudiante.setFoto(imagen.getOriginalFilename());
+            } catch (IOException e) {
+                e.getMessage();
+            }
+            
+            
+        }
 
         estudianteService.savEstudiante(estudiante);
 
