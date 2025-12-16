@@ -135,6 +135,26 @@ public class EstudianteController {
        Estudiante estudiante = estudianteService.getEstudiante(idEstudiante);
        estudianteService.deleteEstudiante(estudiante);
 
+       
+        //comprobar si el empleado tiene foto
+        if(estudiante.getFoto() != null){
+
+            //ruta relativa a la imagen a elimianr
+            Path rutaRelativa = Paths.get("src\\main\\resources\\static\\imagenes\\"+estudiante.getFoto());
+
+            //comprobar si la ruta relativa existe
+            if(Files.exists(rutaRelativa)){
+                try {
+                    Files.delete(rutaRelativa);
+                } catch (IOException e) {
+                   
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+
         return "redirect:/estudiantes/listar";
     }
 

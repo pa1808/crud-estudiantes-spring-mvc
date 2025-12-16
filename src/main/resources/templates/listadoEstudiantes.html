@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de estudiantes</title>
     <style>
-        /* Contenedor general */
+        
         body {
             font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
-            background:#000000;
+            background: rgb(183, 183, 183);
             color: #000000;
             margin: 0;
             padding: 2rem;
@@ -24,8 +24,8 @@
 
         /* Encabezados */
         thead th {
-            background: rgb(226, 245, 61);
-            color: #111;
+            background: #1E3A8A ;
+            color: white;
             font-weight: 600;
             text-align: left;
             padding: 0.75rem 0.9rem;
@@ -35,37 +35,51 @@
         /* Celdas */
         tbody td {
             padding: 0.65rem 0.9rem;
-            border-bottom: 1px solid #f1f8af; /* líneas horizontales */
+            border-bottom: 1px solid #87b0f2; /* líneas horizontales */
             text-align: left;
         }
 
         /* Rayas (zebra) */
         tbody tr:nth-child(odd) {
-            background: rgb(224, 224, 180);
+            background: #d3e3fd;
         }
 
         /* Hover opcional para mejorar lectura */
         tbody tr:hover {
-            background: rgb(226, 245, 61);
+            background: #10B981;
         }
 
         .round{
             width: 250px; 
             margin: 40px auto; 
             padding: 5px; 
-            border: 2px solid rgb(226, 245, 61); 
+            border: 2px solid #1E3A8A; 
             border-radius: 15px; 
             text-align: center;
             box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
         }
+        h1{
+            background-color: #1E3A8A;
+            color: white;
+            text-align: left;
+        }
+
+        h2{
+            text-align: center;
+            color: #1E3A8A;
+        }
+
+       
 
     </style>
 </head>
 <body>
-    <h1 style=" font-size:20-large; color: rgb(226, 245, 61); text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Listado de Estudiantes 👩‍🎓</h1>
-    <div class = round>        
-        <h2 style=" text-align: center; font-size: medium; "><a style= "color: rgb(226, 245, 61); text-decoration: none;" th:href="@{/estudiantes/alta}">Dar de Alta</a></h2>
+    <h1>EduTrack 👩‍🎓</h1>
+    <div class = round >        
+        <h2 style=" text-align: center; font-size: medium; "><a style= "color: #1E3A8A; text-decoration: none;" th:href="@{/estudiantes/alta}">Dar de Alta</a></h2>
     </div>
+    <h2>Listado de Estudiantes </h2>
+    
     <table>
         <thead>
             <tr>

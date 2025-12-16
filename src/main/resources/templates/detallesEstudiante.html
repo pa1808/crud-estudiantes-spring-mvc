@@ -5,23 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles Estudiante</title>
     <style>
-    body {
+        body {
             font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
-            background:#000000;
-            color: white;
+            background: rgb(183, 183, 183);
+            color: #000000;
             margin: 0;
             padding: 2rem;
         }
         
         .round{
-            width: 250px; 
+            width: 450px; 
             margin: 40px auto; 
             padding: 5px; 
-            border: 2px solid rgb(226, 245, 61); 
+            border: 2px solid #1E3A8A; 
             border-radius: 15px; 
-            text-align: center;
+            text-align: left;
             box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
         }
+
 
         .container {
             display: flex;
@@ -37,20 +38,31 @@
 
         }
 
-         h1, h2, h3{
-            font-size:20-large; 
-            color: palevioletred; 
-            text-align: center; 
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        h1{
+            background-color: #1E3A8A;
+            color: white;
+            text-align: left;
         }
+
+        h2{
+            text-align: center;
+            color: #1E3A8A;
+        }
+
+        h3{
+            text-align: center;
+            color: #1E3A8A;
+        }
+
 
     </style>
 </head>
 <body>
-    <h1>
+    <h1> EduTrack 👩‍🎓</h1>
+    <h2>
         <a style="font-size: medium; text-decoration: none;" class="round" href="/estudiantes/listar">⬅️</a>
         Detalles del Estudiante: <b th:text="${estudiante.nombre} + ' '+${estudiante.primerApellido}"></b>
-    </h1>
+    </h2>
     <h2 th:text="'Facultad: '+${estudiante.facultad.nombre}"></h2>
     <div class = "container">
         <div class="round">
