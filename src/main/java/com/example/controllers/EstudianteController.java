@@ -3,6 +3,7 @@ package com.example.controllers;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import org.springframework.ui.Model;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -101,5 +103,61 @@ public class EstudianteController {
 
         return "redirect:/estudiantes/listar";
     }
+
+    @GetMapping("/delete/{id}")
+    public String deleteEstudiante(@PathVariable(name = "id") int idEstudiante) {
+
+       Estudiante estudiante = estudianteService.getEstudiante(idEstudiante);
+       estudianteService.deleteEstudiante(estudiante);
+
+        return "redirect:/estudiantes/listar";
+    }
+
+    @GetMapping("/update/{id}")
+    public String updateEstudiante(Model model, @PathVariable(name = "id") int idEstudiante) {
+
+        Estudiante estudiante = estudianteService.getEstudiante(idEstudiante);
+        model.addAttribute("estudiante",estudiante);
+        model.addAttribute("facultades",facultadService.getAllFacultades());
+
+        List<Telefono> telefonosLista = telefonoService.getAllTelefonos();
+        List<Telefono> telefonosEmpleado = telefonosLista.stream()
+        .filter(t -> t.getEstudiante().equals(estudiante))
+        .toList();
+        if(telefonosEmpleado != null){
+            String telefonos = telefonosEmpleado.stream()
+            .map(t -> t.getNumero())
+            .collect(Collectors.joining(";"));
+            model.addAttribute("numerosTelefono",telefonos);
+        }
+
+        List<Correo> correosLista = correoService.getAllCorreos();
+        List<Correo> correosEmpleado = correosLista.stream()
+        .filter(c -> c.getEstudiante().equals(estudiante))
+        .toList();
+
+        if(correosEmpleado != null){
+            String correos = correosEmpleado.stream()
+            .map(c -> c.getDireccion())
+            .collect(Collectors.joining(";"));
+            model.addAttribute("direccionesCorreo",correos);
+        }
+        
+
+        return "formularioAltaModificacion";
+    }
+    
+    @GetMapping("/detalles/{id}")
+    public String detallesEstudiante(Model model, @PathVariable(name = "id") int idEstudiante) {
+
+        Estudiante estudiante = estudianteService.getEstudiante(idEstudiante);
+        model.addAttribute("estudiante", estudiante);
+        model.addAttribute("telefonos", estudiante.getTelefonos());
+        model.addAttribute("correos", estudiante.getCorreos());
+
+        return "detallesEstudiante";
+    }
+    
+    
     
 }

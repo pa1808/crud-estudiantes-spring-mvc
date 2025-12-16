@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles Estudiante</title>
+    <style>
+    body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+            background:#000000;
+            color: white;
+            margin: 0;
+            padding: 2rem;
+        }
+        
+        .round{
+            width: 250px; 
+            margin: 40px auto; 
+            padding: 5px; 
+            border: 2px solid rgb(226, 245, 61); 
+            border-radius: 15px; 
+            text-align: center;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center; 
+            gap: 20px; 
+            margin-top: 20px;
+        }
+
+         .round img{
+            
+            display: block;      
+            margin: 0 auto;
+
+        }
+
+         h1, h2, h3{
+            font-size:20-large; 
+            color: palevioletred; 
+            text-align: center; 
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>
+        <a style="font-size: medium; text-decoration: none;" class="round" href="/estudiantes/listar">⬅️</a>
+        Detalles del Estudiante: <b th:text="${estudiante.nombre} + ' '+${estudiante.primerApellido}"></b>
+    </h1>
+    <h2 th:text="'Fcaultad: '+${estudiante.facultad.nombre}"></h2>
+    <div class = "container">
+        <div class="round">
+            <h3>Telefonos: </h3>
+            <ul>
+                <li th:each=" telefono: ${telefonos}" th:text="${telefono.numero}"></li>
+            </ul>
+        </div>
+        <div class="round">
+            <h3>Correos: </h3>
+            <ul>
+                <li th:each=" correo: ${correos}" th:text="${correo.direccion}"></li>
+            </ul>
+        </div>
+      
+        
+    </div>
+</body>
+</html>

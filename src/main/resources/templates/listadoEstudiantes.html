@@ -75,6 +75,9 @@
                 <th>Genero</th>
                 <th>Fecha Matricula</th>
                 <th>Facultad</th>
+                <th>Modificar</th>
+                <th>Detalles</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -85,6 +88,9 @@
                 <td th:text="${estudiante.genero}"></td>
                 <td th:text="${estudiante.fechaMatricula}"></td>
                 <td th:text="${estudiante.facultad.nombre}"></td>
+                <td style="text-align: center;"><a style="text-decoration: none;" th:href="@{/estudiantes/update/}+${estudiante.id}">✏️</a></td>
+                <td style="text-align: center;"><a style="text-decoration: none;" th:href="@{/estudiantes/detalles/}+${estudiante.id}">👀</a></td>
+                <td style="text-align: center;"><a style="text-decoration: none;" th:href="@{/estudiantes/delete/}+${estudiante.id}">🗑️</a></td>
             </tr>
         </tbody>
     </table>

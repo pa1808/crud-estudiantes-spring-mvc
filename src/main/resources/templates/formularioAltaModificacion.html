@@ -46,6 +46,7 @@
         Formulario de Alta/Modificación de Estudiantes ✏️
     </h1>
     <form class = round method="post" th:object="${estudiante}" th:action="@{/estudiantes/guardar}">
+        <input type="hidden" th:field="*{id}">
         <label for="nombre">Nombre:</label>
         <input type="text" th:field="*{nombre}" id="nombre" reuqired>
         <br><br>
@@ -73,14 +74,14 @@
         <label for="facultad">Facultad:</label>
         <select id="facultad" th:field="*{facultad}" required>
             <option value="">Seleccione una opción</option>
-            <option th:each=" facultad: ${facultades}" th:text="${facultad.nombre}" th:value="${facultad.id}"></option>
+            <option th:each="facultad: ${facultades}" th:text="${facultad.nombre}" th:value="${facultad.id}"></option>
         </select>
         <br><br>
         <label for="telefonos">Telefono(s)</label>
-        <input type="text" id="telefonos" name="numerosTelefono"  placeholder="uno o más separados por ;">
+        <input type="text" id="telefonos" name="numerosTelefono" th:value="${numerosTelefono}" placeholder="uno o más separados por ;">
         <br><br>
         <label for="correos">Correo(s)</label>
-        <input type="text" id="correos" name="direccionesCorreo" placeholder="uno o más separados por ;">
+        <input type="text" id="correos" name="direccionesCorreo" th:value="${direccionesCorreo}" placeholder="uno o más separados por ;">
         <input type="submit" value="Enviar" style=
             "margin-left: 40%;
             margin-top: 5%;
