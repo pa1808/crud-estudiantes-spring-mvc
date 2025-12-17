@@ -12,6 +12,6 @@ import java.util.List;
 public interface TelefonoDao extends JpaRepository<Telefono, Integer>{
 
     boolean existsByEstudiante(Estudiante estudiante);
-    void deleteByEmpleado(Estudiante estudiante);
+    void deleteByEstudiante(Estudiante estudiante);
 
 }

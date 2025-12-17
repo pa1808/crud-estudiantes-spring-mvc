@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.controllers.Estudiante;
 import com.example.dao.TelefonoDao;
+import com.example.entities.Estudiante;
 import com.example.entities.Telefono;
 
 import lombok.RequiredArgsConstructor;
@@ -27,13 +27,13 @@ public class TelefonoServiceImpl implements TelefonoService{
     }
 
     @Override
-    public boolean existsByEstudiante(com.example.entities.Estudiante estudiante) {
+    public boolean existsByEstudiante(Estudiante estudiante) {
         return telefonoDao.existsByEstudiante(estudiante);
     }
 
     @Override
-    public void deleteByEstudiante(com.example.entities.Estudiante estudiante) {
-        telefonoDao.deleteByEmpleado(estudiante);
+    public void deleteByEstudiante(Estudiante estudiante) {
+        telefonoDao.deleteByEstudiante(estudiante);
     }
 
 
