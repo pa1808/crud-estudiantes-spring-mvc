@@ -10,11 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.entities.Correo;
 import com.example.entities.Estudiante;
 import com.example.entities.Facultad;
+import com.example.entities.Profesor;
 import com.example.entities.Telefono;
 import com.example.models.Genero;
 import com.example.services.CorreoService;
 import com.example.services.EstudianteService;
 import com.example.services.FacultadService;
+import com.example.services.ProfesorService;
 import com.example.services.TelefonoService;
 
 import lombok.RequiredArgsConstructor;
@@ -27,6 +29,7 @@ public class CrudEstudiantesSpringMvcApplication implements CommandLineRunner{
 	private final EstudianteService estudianteService;
 	private final CorreoService correoService;
 	private final TelefonoService telefonoService;
+	private final ProfesorService profesorService;
 
 
 	public static void main(String[] args) {
@@ -148,6 +151,55 @@ public class CrudEstudiantesSpringMvcApplication implements CommandLineRunner{
 		correoService.saveCorreo(correo4);
 		correoService.saveCorreo(correo5);
 
+
+		//añadimos profesores a facultades
+
+		Profesor profesor1 = Profesor.builder()
+		.nombre("Victor")
+		.primerApellido("Machado")
+		.segundoApellido("García")
+		.genero(Genero.HOMBRE)
+		.fechaAlta(LocalDate.of(2010, Month.APRIL, 10))
+		.salario(2000)
+		.facultad(facultad1)
+		.build();
+
+		Profesor profesor2 = Profesor.builder()
+		.nombre("Maria")
+		.primerApellido("Simón")
+		.segundoApellido("De la Rosa")
+		.genero(Genero.MUJER)
+		.fechaAlta(LocalDate.of(2020, Month.MAY, 15))
+		.salario(2200)
+		.facultad(facultad1)
+		.build();
+
+		Profesor profesor3 = Profesor.builder()
+		.nombre("Alberto")
+		.primerApellido("Rojo")
+		.segundoApellido("Hernández")
+		.genero(Genero.HOMBRE)
+		.fechaAlta(LocalDate.of(2025, Month.SEPTEMBER, 1))
+		.salario(1000)
+		.facultad(facultad2)
+		.build();
+
+		Profesor profesor4 = Profesor.builder()
+		.nombre("Sofía")
+		.primerApellido("García")
+		.segundoApellido("Besó")
+		.genero(Genero.OTRO)
+		.fechaAlta(LocalDate.of(2018, Month.JUNE, 3))
+		.salario(3000)
+		.facultad(facultad2)
+		.build();
+
+		profesorService.saveProfesor(profesor4);
+		profesorService.saveProfesor(profesor1);
+		profesorService.saveProfesor(profesor2);
+		profesorService.saveProfesor(profesor3);
+
+		
 	}
 
 

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ListadoProfesores</title>
+    <style>
+        
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: rgb(183, 183, 183);
+            color: #000000;
+            margin: 0;
+            padding: 2rem;
+        }
+        /* Centrar la tabla */
+        table {
+            margin: 0 auto;            /* centra horizontalmente */
+            border-collapse: collapse; /* para que las líneas se vean limpias */
+            width: min(900px, 95%);    /* tamaño responsivo */
+            background: #fff;
+            border: 1px solid #ddd;    /* borde exterior suave */
+        }
+
+        /* Encabezados */
+        thead th {
+            background: #1E3A8A ;
+            color: white;
+            font-weight: 600;
+            text-align: left;
+            padding: 0.75rem 0.9rem;
+            border-bottom: 1px solid #7b834c;
+        }
+
+        /* Celdas */
+        tbody td {
+            padding: 0.65rem 0.9rem;
+            border-bottom: 1px solid #87b0f2; /* líneas horizontales */
+            text-align: left;
+        }
+
+        /* Rayas (zebra) */
+        tbody tr:nth-child(odd) {
+            background: #d3e3fd;
+        }
+
+        /* Hover opcional para mejorar lectura */
+        tbody tr:hover {
+            background: #10B981;
+        }
+
+        .round{
+            width: 250px; 
+            margin: 40px auto; 
+            padding: 5px; 
+            border: 2px solid #1E3A8A; 
+            border-radius: 15px; 
+            text-align: center;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        }
+        h1{
+            background-color: #1E3A8A;
+            color: white;
+            text-align: left;
+        }
+
+        h2{
+            text-align: center;
+            color: #1E3A8A;
+        }
+
+       
+
+    </style>
+</head>
+<body>
+    <h1>EduTrack 👩‍🎓</h1>
+    <div class = round >        
+        <h2 style=" text-align: center; font-size: medium; "><a style= "color: #1E3A8A; text-decoration: none;" th:href="@{/profesores/alta}">Dar de Alta</a></h2>
+    </div>
+    <h2>Listado de Profesores </h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Genero</th>
+                <th>Fecha de Alta</th>
+                <th>Salario</th>
+                <th>Facultad</th>
+                <th>Modificar</th>
+                <th>Detalles</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each=" profesor: ${profesores}">
+                <td th:text="${profesor.nombre}"></td>
+                <td th:text="${profesor.primerApellido}"></td>
+                <td th:text="${profesor.segundoApellido}"></td>
+                <td th:text="${profesor.genero}"></td>
+                <td th:text="${profesor.fechaAlta}"></td>
+                <td th:text="${profesor.salario}"></td>
+                <td th:text="${profesor.facultad.nombre}"></td>
+                <td style="text-align: center;"><a style="text-decoration: none;" th:href="@{/profesores/update/}+${profesor.id}">✏️</a></td>
+                <td style="text-align: center;"><a style="text-decoration: none;" th:href="@{/profesores/detalles/}+${profesor.id}">👀</a></td>
+                <td style="text-align: center;"><a style="text-decoration: none;" th:href="@{/profesores/delete/}+${profesor.id}">🗑️</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
